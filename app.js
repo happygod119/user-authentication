@@ -10,6 +10,18 @@ const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 //- 引用mongoose;
 require("./config/mongoose");
+
+//- 使用 express-session 套件
+const session = require('express-session')
+//- 需放在routes前面
+app.use(session({
+  secret: 'loggedSuccussfully',
+  name: 'user',
+
+  resave: false,
+  saveUninitialized: false,
+}))
+
 //- 引用路由器
 const routes = require("./routes");
 
